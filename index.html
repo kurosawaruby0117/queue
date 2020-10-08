@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <title>4주차 자료구조 활동 보고서 -20181031</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="myInfo">
+      <h1>3주차: queue</h1>
+      <h2>20181031 영어영문학과 이창진</h2>
+      <h5>
+        <a href="https://kurosawaruby0117.github.io/stack/">온라인으로 보기</a>
+      </h5>
+    </header>
+    <main>
+      <header>
+        <ul class="index__list" id="top">
+          <li class="index">
+            <span class="index_big" id="first"
+              ><a href="#main_first">1.큐</a></span
+            >
+            <ul class="index_small">
+              <li>
+                <span id="first_first"
+                  ><a href="#main_first_first">1-1. 큐란 무엇인가</a></span
+                >
+              </li>
+              <li>
+                <span id="first_second"
+                  ><a href="#main_first_second">1-2. 큐의 구조</a></span
+                >
+              </li>
+              <li>
+                <span id="first_third"
+                  ><a href="#main_first_thrid">1-3. 엥 왜 이러지?</a></span
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="index_big">
+            <span class="index_big" id="second"
+              ><a href="#main_second">2. 원형 큐</a></span
+            >
+            <ul class="index_small">
+              <li>
+                <span id="second_one"
+                  ><a href="#main_second_first"
+                    >2-1. 원형 큐란 무엇인가?</a
+                  ></span
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="index_big">
+            <span class="index_big" id="third"
+              ><a href="#main_third">3. 느낀 점</a></span
+            >
+          </li>
+        </ul>
+      </header>
+      <div class="p_index">
+        <h2 class="p_index_title" id="main_first"><a href="#top">1. 큐</a></h2>
+        <h3 class="p_index_title_sub" id="main_first_first">
+          <a href="#top">1-1. 큐란 무엇인가</a>
+        </h3>
+        <p>
+          <a
+            href="https://en.dict.naver.com/#/entry/enko/02265fc67dac436e9e1f704ad898378e"
+            >QUEUE</a
+          >의 영단어적 의미는 무언가를 기다리는 줄을 의미합니다.<br />
+          만약 음식점에서 차례를 기다리고 있다고 생각해봅시다. 그때 나보다 늦게
+          온 사람이 먼저 들어오면 화가 날 것입니다. 먼저 온 사람이 먼저
+          들어간다. 이게 큐의 핵심개념입니다.<br />
+          <strong>FIFO(FIRST IN FIRST OUT)</strong>구조: 먼저 들어온 것이 먼저
+          나갑니다.
+        </p>
+        <h3 class="p_index_title_sub" id="main_first_first">
+          <a href="#top">1-2. 큐의 기능</a>
+        </h3>
+        <ul>
+          <li>enqueue(): 큐의 맨뒤의 값을 추가합니다.</li>
+          <li>dequeue(): 큐의 맨앞의 값을 삭제합니다.</li>
+          <li>front(): 큐의 맨앞의 값을 확인합니다.</li>
+          <li>back(): 큐의 맨뒤의 값을 확인합니다.</li>
+          <li>isEmpty(): 큐가 비어있는지 확인합니다.</li>
+        </ul>
+        <div>
+          맨왼쪽이 배열의 시작이라고 가정합니다. 큐의 최대크기는 9입니다.
+          <strong>버튼을 눌러보세요.</strong>
+        </div>
+        <div
+          class="stack_place"
+          style="height: 200px; border: 1px solid black"
+        ></div>
+        <div class="stack_size">
+          큐에 들어있는 갯수:<span id="stack_size_size">0</span>
+        </div>
+        <div class="stack_button">
+          <button id="push">enqueue</button>
+          <button id="pop">dequeue</button>
+          <button id="front">front</button>
+          <button id="back">back</button>
+          <button id="isEmpty">is empty?</button>
+        </div>
+        <h3 class="p_index_title" id="main_first_third">
+          <a href="#top">1-3. 엥? 왜 이러지?</a>
+        </h3>
+        <p>
+          큐를 끝까지 빼보셨다면, 왜 큐에 들어있는 갯수가 줄지 않지? 생각이
+          드셨을 겁니다.<br />
+          큐는 스택과 다르게, 앞에서 부터 빼기 때문에 pop()을 실행했다면
+          배열들을 앞으로 당겨주는 귀찮은 행동을 해야합니다.<br />
+          그것을 해겷하기 위한 방법이 원형 큐, 즉 큐를 둥그런 형태로 구현한
+          것입니다.
+        </p>
+      </div>
+      <div class="p_index">
+        <h2 class="p_index_title" id="main_second">
+          <a href="#top">2. 원형 큐</a>
+        </h2>
+        <h3 class="p_index_title_sub" id="main_second_first">
+          <a href="#top">2-1. 원형 큐란 무엇인가?</a>
+        </h3>
+        <p>앞서 말씀 드렸다 싶이, 큐를 둥글게 만 것이 원형 큐입니다.<br /></p>
+
+        <ul>
+          <li>
+            변수 front:큐의 맨 앞을 나타내며,처음에는 0을 가리킵니다. dequeue가 일어날 때 값이 1씩
+            더해집니다.
+          </li>
+          <li>
+            변수 rear:큐의 꼬리를 의미하며,front와 마찬가지로 0을 가리킵니다. enqueue가 일어날때 값이
+            1씩 더해집니다.
+          </li>
+          <li>
+            enqueue가 일어나는 방식: (rear+1)%size의 값이 front와 같다면 그 큐는
+            가득 찬 상태입니다. 일단 이 상태를 검사한 후, 가득 차지 않았다면
+            삽입을 시작합니다.<br />
+            rear값을 1 증가시킨 후 배열의 크기로 나눈 후, 그 배열의 자리에 값을
+            넣어줍니다. 그렇기 때문에 배열의 맨첫번째항은 빈 상태입니다.
+          </li>
+          <li>
+            dequeue가 일어나는 방식:만약 rear값과 front값이 같다면 그 배열은
+            비어있단 소리입니다. 일단 이 상태를 검사한 후, 비어있지 않으면
+            삭제를 시작합니다.<br />
+            front 값을 1 증가 시킨 후, 사이즈로 나눠줍니다. 그후 그 곳의 값을
+            반환힙니다.
+          </li>
+        </ul>
+        <div
+          class="stack_place2"
+          style="height: 200px; border: 1px solid black"
+        >
+          <div style="color: #fdfd96">빔</div>
+          <div style="color: #add8e6">빔</div>
+          <div style="color: #a1a5a4">빔</div>
+          <div style="color: #ffb6c1">빔</div>
+          <div style="color: #f76865">빔</div>
+          <div style="color: #ffa359">빔</div>
+          <div style="color: #d5ace7">빔</div>
+          <div style="color: #000080">빔</div>
+          <div style="color: #adec92">빔</div>
+        </div>
+        <div class="stack_size2">
+          <span style="margin-right: 30px"
+            >rear:<span id="stack_size_size_rear">0</span></span
+          >
+          <span> front:<span id="stack_size_size_front">0</span> </span>
+        </div>
+        <div class="stack_button2">
+          <button id="push">enqueue</button>
+          <button id="pop">dequeue</button>
+        </div>
+        <p>
+          <strong>한쪽을 비워두는 이유</strong><br />
+          큐가 가득 차있나, 안 차있나 구분하기 위해서 비워두어야 합니다.
+          <button>
+            <a href="https://repl.it/@GoldenRuby/queue#main.cpp" target="_blank"
+              >소스코드로 보기</a
+            >
+          </button>
+        </p>
+        <h3 id="main_third"><a href="#top">3. 느낀점</a></h3>
+        <p>
+         스택과 비슷한 부분과 있음에도, 꽤 다른 부분때문에 애를 먹었습니다.</br>
+         특히 은행서비스를 보면서, 아 큐는 스택보다 어렵구나를 실감했습니다.</br>
+         더 열심히 공부해야겠다는 생각과, 이걸 친절하게 설명해주신 이번주 조장님이 존경스러웠습니다.
+        </p>
+      </div>
+    </main>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script2.js"></script>
+  </body>
+</html>
